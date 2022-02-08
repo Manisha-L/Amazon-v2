@@ -4,12 +4,15 @@ import {
   MenuIcon,
   ShoppingCartIcon,
 } from "@heroicons/react/outline";
-
+import { useSession, signIn, signOut } from "next-auth/react";
 import { useRouter } from "next/router";
+import { useSelector } from "react-redux";
+import { selectItems } from "../slices/basketSlice";
 
 function Header() {
+  const { data: session } = useSession();
   const router = useRouter();
-
+  const items = useSelector(selectItems);
   return (
     <div>
       {/* Top Nav */}
@@ -32,7 +35,13 @@ function Header() {
           <SearchIcon className="h-12 p-4 text-black " />
         </div>
         <div className="mr-2 text-[0.63rem] ml-4 xs:mr-3 flex items-center xs:space-x-3 xs:ml-10 xs:text-xs text-white whitespace-nowrap">
-          <div className="cursor-pointer hover:underline ">
+          <div
+            onClick={session ? signOut : signIn}
+            className="cursor-pointer hover:underline "
+          >
+            <p>
+              {session ? `Hello, ${session.user.name}` : `Hello, ${"Sign In"}`}
+            </p>
             <p className=" sm:text-sm font-semibold">Account & Lists</p>
           </div>
           <div className="cursor-pointer hover:underline ml-[7px]">
@@ -40,7 +49,9 @@ function Header() {
             <p className=" sm:text-sm  font-semibold">& Orders</p>
           </div>
           <div className="flex items-center link relative cursor-pointer hover:underline">
-            <div className="bg-yellow-300 rounded-full h-4 w-4 flex items-center justify-center text-black  left-7 absolute top-0 right-0 font-extrabold"></div>
+            <div className="bg-yellow-300 rounded-full h-4 w-4 flex items-center justify-center text-black  left-7 absolute top-0 right-0 font-extrabold">
+              {items.length}
+            </div>
             <ShoppingCartIcon className="h-8" />
 
             <p
