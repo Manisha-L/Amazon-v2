@@ -16,7 +16,7 @@ function Checkout() {
   return (
     <div>
       <Header />
-      <div className="flex flex-col-reverse h-full sm:flex-row w-full  justify-evenly bg-gray-100">
+      <div className="flex flex-col-reverse h-full pt-28 sm:flex-row w-full  justify-evenly bg-gray-100">
         {/* Products */}
         <div className="w-[100%] sm:w-[70%]  mt-5 bg-white">
           <h1 className="mb-2 p-3 mx-3 text-2xl font-semibold">

@@ -14,7 +14,7 @@ function Header() {
   const router = useRouter();
   const items = useSelector(selectItems);
   return (
-    <div>
+    <div className="fixed z-30 w-full">
       {/* Top Nav */}
       <div className="bg-amazon_blue h-15 flex w-full justify-between items-center  text-xs p-1  py-2 ">
         <div className="w-[75px]  mt-2 ml-2">
