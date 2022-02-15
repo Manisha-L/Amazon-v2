@@ -52,14 +52,12 @@ function Header() {
             <div className="bg-yellow-300 rounded-full h-4 w-4 flex items-center justify-center text-black  left-7 absolute top-0 right-0 font-extrabold">
               {items.length}
             </div>
-            <ShoppingCartIcon className="h-8" />
-
-            <p
-              className="hidden md:inline text-sm font-semibold mt-3"
-              onClick={() => router.push("/checkout")}
-            >
-              Basket
-            </p>
+            <div className="flex" onClick={() => router.push("/checkout")}>
+              <ShoppingCartIcon className="h-8" />
+              <p className="hidden md:inline text-sm font-semibold mt-3">
+                Basket
+              </p>
+            </div>
           </div>
         </div>
       </div>

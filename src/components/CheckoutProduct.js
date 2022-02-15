@@ -9,12 +9,12 @@ function CheckoutProduct({ image, title, description, price }) {
     dispatch(removeFromBasket({ title }));
   };
   return (
-    <div className=" xs:ml-5">
-      <div className="flex w-[100%] h-[50%] my-3 ">
-        <div className="w-[50%] xs:w-[25%] xs:px-5">
-          <div className="w-20 h-20 xs:w-40 xs:h-40 ">
-            <img src={image} className="w-full h-full object-contain" />
-          </div>
+    <div className="ml-1 xs:ml-5 ">
+      <div className="flex w-[100%] h-[50%]  my-3 ">
+        <div className="w-[40%] xs:w-[30%]  xs:px-5 md:w-[20%]">
+          {/* <div className="w-[90%] h-[70%] xs:w-[100%] "> */}
+          <img src={image} className="w-full h-full object-contain" />
+          {/* </div> */}
         </div>
         <div className="flex flex-col w-[75%]  sm:flex-row ">
           <div className="xs:w-[80%]">
@@ -32,7 +32,7 @@ function CheckoutProduct({ image, title, description, price }) {
               Delete
             </button>
           </div>
-          <h3 className="xs:w-[20%] xs:ml-5 xs:text-center font-bold">
+          <h3 className="xs:w-[20%]   font-bold">
             <Currency quantity={price} currency="GBP" />
           </h3>
         </div>
