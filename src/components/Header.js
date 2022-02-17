@@ -17,7 +17,7 @@ function Header() {
     <div className="fixed z-30 w-full">
       {/* Top Nav */}
       <div className="bg-amazon_blue h-15 flex w-full justify-between items-center  text-xs p-1  py-2 ">
-        <div className="w-[75px]  mt-2 ml-2">
+        <div className="w-[80px]  mt-2 ml-3">
           <img
             src="/amazon-logo.png"
             width={100}
@@ -27,7 +27,7 @@ function Header() {
           />
         </div>
 
-        <div className="hidden  sm:flex h-10 focus:border-yellow-400 items-center rounded-md flex-grow ml-2 bg-yellow-400 hover:bg-yellow-500  cursor-pointer">
+        <div className="hidden  sm:flex h-10 focus:border-yellow-400 items-center rounded-md flex-grow ml-7 bg-yellow-400 hover:bg-yellow-500  cursor-pointer">
           <input
             type="text"
             className="w-6 p-2 px-4 h-full flex-grow rounded-l-md text-black font-medium text-base focus:outline-none cursor-pointer"
@@ -39,7 +39,7 @@ function Header() {
             onClick={session ? signOut : signIn}
             className="cursor-pointer hover:underline "
           >
-            <p>
+            <p className="whitespace-normal">
               {session ? `Hello, ${session.user.name}` : `Hello, ${"Sign In"}`}
             </p>
             <p className=" sm:text-sm font-semibold">Account & Lists</p>

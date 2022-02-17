@@ -7,9 +7,7 @@ import { selectItems } from "../slices/basketSlice";
 import { selectPrice } from "../slices/basketSlice";
 import CheckoutProduct from "../components/CheckoutProduct";
 import { useSession, signIn, signOut } from "next-auth/react";
-import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
-import { useEffect } from "react";
 import axios from "axios";
 
 const stripePromise = loadStripe(
@@ -47,6 +45,8 @@ const Checkout = () => {
           <hr className="mx-5" />
           {items.map((item, i) => (
             <CheckoutProduct
+              // quantity={quantity}
+              // setQuantity={setQuantity}
               image={item.image}
               title={item.title}
               description={item.description}
