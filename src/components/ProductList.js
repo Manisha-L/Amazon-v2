@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Product from "./Product";
+import { useState } from "react";
 
 function ProductList({ products }) {
   return (

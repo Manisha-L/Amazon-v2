@@ -15,6 +15,7 @@ const stripePromise = loadStripe(
 );
 const Checkout = () => {
   const items = useSelector(selectItems);
+
   const total = useSelector(selectPrice);
   const { data: session } = useSession();
 
@@ -45,12 +46,11 @@ const Checkout = () => {
           <hr className="mx-5" />
           {items.map((item, i) => (
             <CheckoutProduct
-              // quantity={quantity}
-              // setQuantity={setQuantity}
               image={item.image}
               title={item.title}
               description={item.description}
               price={item.price}
+              itemQuantity={item.itemQuantity}
             />
           ))}
         </div>
@@ -72,7 +72,9 @@ const Checkout = () => {
             Select this option at checkout.
           </p>
           <h1 className="ml-1 font-medium text-lg mt-5">
-            Subtotal ({items.length} items):{" "}
+            Subtotal(
+            {items.reduce((quantity, item) => quantity + item.itemQuantity, 0)}
+            <span> items): </span>
             <span className="font-bold">
               <Currency quantity={total} currency="GBP" />
             </span>

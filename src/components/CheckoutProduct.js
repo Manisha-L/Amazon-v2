@@ -1,11 +1,9 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { removeFromBasket } from "../slices/basketSlice";
+import { removeFromBasket, decrement, increment } from "../slices/basketSlice";
 import Currency from "react-currency-formatter";
-import { useState } from "react";
 
-function CheckoutProduct({ image, title, description, price }) {
-  const [quantity, setQuantity] = useState(1);
+function CheckoutProduct({ image, title, description, price, itemQuantity }) {
   const dispatch = useDispatch();
   const removeItemFromBasket = () => {
     dispatch(removeFromBasket({ title }));
@@ -14,41 +12,16 @@ function CheckoutProduct({ image, title, description, price }) {
     <div className="ml-1 xs:ml-5 ">
       <div className="flex w-[100%] h-[50%]  my-3 ">
         <div className="w-[40%] xs:w-[30%]  xs:px-5 md:w-[20%]">
-          {/* <div className="w-[90%] h-[70%] xs:w-[100%] "> */}
           <img src={image} className="w-full h-full object-contain" />
-          {/* </div> */}
         </div>
         <div className="flex flex-col w-[75%]  sm:flex-row ">
           <div className="xs:w-[80%]">
             <h3 className="text-md font-semibold  line-clamp-1">{title}</h3>
             <h3 className="line-clamp-2 text-sm mt-2">{description}</h3>
-
-            {/* quantity */}
-
-            <button
-              onClick={() => {
-                setQuantity(quantity - 1);
-              }}
-              className="bg-[#007185] px-2 text-white rounded hover:bg-blue-600"
-            >
-              -
-            </button>
-            <input
-              value={quantity}
-              type="number"
-              className="border border-[#007185] w-8 mx-1"
-            />
-            <button
-              onClick={() => {
-                setQuantity(quantity + 1);
-              }}
-              className="bg-[#007185] px-2 text-white rounded hover:bg-blue-600"
-            >
-              +
-            </button>
-
-            <span className="text-[#ddd]">|</span>
-
+            <span className="text-[#007185] text-xs xs:mt-5">
+              Quantity: {itemQuantity}
+            </span>
+            <span className="text-[#ddd] ml-2 mr-2">|</span>
             <button
               onClick={removeItemFromBasket}
               className="text-[#007185] text-xs xs:mt-5"
@@ -57,7 +30,7 @@ function CheckoutProduct({ image, title, description, price }) {
             </button>
           </div>
           <h3 className="xs:w-[20%]   font-bold">
-            <Currency quantity={quantity * price} currency="GBP" />
+            <Currency quantity={price * itemQuantity} currency="GBP" />
           </h3>
         </div>
       </div>
@@ -65,5 +38,4 @@ function CheckoutProduct({ image, title, description, price }) {
     </div>
   );
 }
-
 export default CheckoutProduct;

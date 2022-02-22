@@ -4,7 +4,7 @@ export default async (req, res) => {
   const { items, email } = req.body;
   const transformedItems = items.map((item) => ({
     description: item.description,
-    quantity: 1,
+    quantity: item.itemQuantity,
     price_data: {
       currency: "gbp",
       unit_amount: item.price * 100,

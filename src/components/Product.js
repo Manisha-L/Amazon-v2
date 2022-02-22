@@ -6,15 +6,18 @@ import { useDispatch } from "react-redux";
 import { addToBasket } from "../slices/basketSlice";
 
 function Product({ category, image, title, description, price }) {
+  const [itemQuantity, setItemQuantity] = useState(1);
   const [rating] = useState(Math.floor(Math.random() * 5) + 1);
   const [hasPrime] = useState(Math.random() < 0.5);
   const dispatch = useDispatch();
 
   const addItemtoBasket = () => {
-    dispatch(addToBasket({ category, image, title, description, price }));
+    dispatch(
+      addToBasket({ category, image, title, description, price, itemQuantity })
+    );
   };
   return (
-    <div className=" relative pointer-events-auto flex w-full xxs:w-[11.8rem]  xs:w-56 sm:w-72  rounded-[0.150rem] bg-white flex-col my-4   items-center  shadow-lg">
+    <div className=" relative pointer-events-auto flex w-full xxs:w-[11.8rem]  xs:w-56 sm:w-72    rounded-[0.150rem] bg-white flex-col my-4   items-center  shadow-lg">
       <h3 className="text-xs mb-2 w-full text-right pr-1 pt-1 italic text-gray-400">
         {category}
       </h3>
@@ -36,10 +39,33 @@ function Product({ category, image, title, description, price }) {
             <StarIcon className="h-5 w-4 text-yellow-400 " />
           ))}
       </div>
-
-      <h3 className="mb-16 sm:mb-0 text-md font-semibold text-center w-full px-5 ">
-        <Currency quantity={price} currency="GBP" />
+      {/* <div className="flex justify-between w-[80%]"> */}
+      <h3 className="mb-16 sm:mb-0  text-md font-semibold  px-5 text-center ">
+        <Currency quantity={price * itemQuantity} currency="GBP" />
       </h3>
+      <div className="flex align-center mt-2">
+        <span className=" mr-2 text-md  font-semibold"> Quantity: </span>
+        <button
+          onClick={() =>
+            itemQuantity === 1 ? "" : setItemQuantity(itemQuantity - 1)
+          }
+          className="text-black w-7 h-7 border border-gray-200  hover:bg-yellow-300 "
+        >
+          <span className="">-</span>
+        </button>
+        <input
+          value={itemQuantity}
+          type="text"
+          className="border border-gray-200 w-7 h-7  font-semibold text-center"
+        />
+        <button
+          onClick={() => setItemQuantity(itemQuantity + 1)}
+          className="text-black w-7 h-7  border border-gray-200  hover:bg-yellow-300"
+        >
+          <span className="">+</span>
+        </button>
+      </div>
+      {/* </div> */}
 
       {hasPrime && (
         <div className="flex w-full px-3 mb-12 items-center justify-center">
