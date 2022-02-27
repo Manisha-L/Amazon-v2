@@ -32,8 +32,6 @@ const fulfillOrder = async (session) => {
 };
 
 export default async (req, res) => {
-  res.status(200).send("hello");
-
   if (req.method === "POST") {
     const requestBuffer = await buffer(req);
     const payload = requestBuffer.toString();
@@ -49,13 +47,15 @@ export default async (req, res) => {
     }
     if (event.type === "checkout.session.completed") {
       const session = event.data.object;
+      fulfillOrder(session);
       // res.status(200);
-
-      return fulfillOrder(session)
-        .then
-        // () => res.status(200)
-        ()
-        .catch((err) => res.status(400).send(`Webhook Error: ${err.message}`));
+      res.status(200).send("hello");
+      return;
+      // return fulfillOrder(session)
+      //   .then
+      //   // () => res.status(200)
+      //   ()
+      //   .catch((err) => res.status(400).send(`Webhook Error: ${err.message}`));
     }
   }
 };
