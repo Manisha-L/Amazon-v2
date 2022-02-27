@@ -32,7 +32,8 @@ const fulfillOrder = async (session) => {
 };
 
 export default async (req, res) => {
-  res.status(200);
+  res.status(200).send("hello");
+  return;
   if (req.method === "POST") {
     const requestBuffer = await buffer(req);
     const payload = requestBuffer.toString();
