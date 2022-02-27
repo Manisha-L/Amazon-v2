@@ -31,11 +31,11 @@ export default function Order({
         <p className="truncate w-[30%] text-xs absolute right-5 top-0">
           Order# {id}
         </p>
-        {/* <div className="w-[30%]">
+        <div className="w-[30%]">
           <p className=" text-blue-500 mt-3 text-sm text-right">
             {items.reduce((q, item) => q + item.quantity, 0)} item(s)
           </p>
-        </div> */}
+        </div>
       </div>
       <div className="w-full overflow-x-auto py-3">
         <div className="flex space-x-10 h-32">
