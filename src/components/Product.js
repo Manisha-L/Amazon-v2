@@ -71,7 +71,7 @@ function Product({ category, image, title, description, price }) {
         <div className="flex w-full px-3 mb-12 items-center justify-center">
           <div className="w-3/12">
             <img
-              src="prime-logo.png "
+              src="prime.png "
               width="100%"
               height="100%"
               className="object-contain"
