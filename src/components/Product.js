@@ -72,16 +72,10 @@ function Product({ category, image, title, description, price }) {
         <div className="flex w-full px-3 mb-12 items-center justify-center">
           <div className="w-3/12">
             <img
-              src="/prime.png"
+              src="/Prime.png"
               className="w-full h-full object-contain"
               alt="prime-logo"
             />
-            {/* <Image
-      src={mypic}
-      alt="Picture of the author"
-      width="350px"
-      height="300px"
-    /> */}
           </div>
           <p className="hidden  xs:inline-flex whitespace-nowrap text-xs font-semibold text-gray-500 w-8/12  ml-1 ">
             FREE Delivery by Amazon
