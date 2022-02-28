@@ -4,10 +4,9 @@ import Currency from "react-currency-formatter";
 import { StarIcon } from "@heroicons/react/solid";
 import { useDispatch } from "react-redux";
 import { addToBasket } from "../slices/basketSlice";
-import { useSession, signIn } from "next-auth/react";
+import Image from "next/image";
 
 function Product({ category, image, title, description, price }) {
-  const { data: session } = useSession();
   const [itemQuantity, setItemQuantity] = useState(1);
   const [rating] = useState(Math.floor(Math.random() * 5) + 1);
   const [hasPrime] = useState(Math.random() < 0.5);
@@ -85,8 +84,7 @@ function Product({ category, image, title, description, price }) {
       )}
 
       <button
-        role="link"
-        onClick={!session ? signIn : addItemtoBasket}
+        onClick={addItemtoBasket}
         className=" absolute bottom-1 px-10 md:px-14 py-1 text-sm font-bold rounded-sm border border-yellow-300 mb-5 bg-gradient-to-b from-yellow-200 to-yellow-400  active:from-yellow-500"
       >
         Add to Basket
