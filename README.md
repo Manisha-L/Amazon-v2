@@ -1,6 +1,6 @@
 This is an Amazon Shopping Site's clone version built using Next.js which provides functionality from sign up till payment checkout.
 
-Demo link:
+Demo link: https://amazon-v2.isha-dev.com/
 
 Technologies:
 • Next.js
