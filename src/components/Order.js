@@ -23,8 +23,8 @@ export default function Order({
           <p className="font-semibold text-sm">TOTAL</p>
           <div className=" text-xs">
             <Currency quantity={amount} currency="GBP" />
-            <span className=" text-xs">-EXPRESS DELIVERY</span>
-            <Currency quantity={amount_shipping} currency="GBP" />
+            <span className=" text-xs"> (inc. EXPRESS DELIVERY</span>
+            <Currency quantity={amount_shipping} currency="GBP" />)
           </div>
         </div>
 

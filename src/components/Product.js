@@ -2,11 +2,13 @@ import React from "react";
 import { useState } from "react";
 import Currency from "react-currency-formatter";
 import { StarIcon } from "@heroicons/react/solid";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { selectItems } from "../slices/basketSlice";
 import { addToBasket } from "../slices/basketSlice";
-import Image from "next/image";
+import { useEffect } from "react";
 
 function Product({ category, image, title, description, price }) {
+  const items = useSelector(selectItems);
   const [itemQuantity, setItemQuantity] = useState(1);
   const [rating] = useState(Math.floor(Math.random() * 5) + 1);
   const [hasPrime] = useState(Math.random() < 0.5);
@@ -17,6 +19,7 @@ function Product({ category, image, title, description, price }) {
       addToBasket({ category, image, title, description, price, itemQuantity })
     );
   };
+
   return (
     <div className=" relative pointer-events-auto flex w-full xxs:w-[11.8rem]  xs:w-56 sm:w-72    rounded-[0.150rem] bg-white flex-col my-4   items-center  shadow-lg">
       <h3 className="text-xs mb-2 w-full text-right pr-1 pt-1 italic text-gray-400">

@@ -1,4 +1,3 @@
-import Image from "next/image";
 import {
   SearchIcon,
   MenuIcon,
@@ -13,6 +12,7 @@ function Header() {
   const { data: session } = useSession();
   const router = useRouter();
   const items = useSelector(selectItems);
+
   return (
     <div className="fixed z-30 w-full">
       {/* Top Nav */}
@@ -36,13 +36,19 @@ function Header() {
         </div>
         <div className="mr-2 text-[0.63rem] ml-4 xs:mr-3 flex items-center xs:space-x-3 xs:ml-10 xs:text-xs text-white whitespace-nowrap">
           <div
-            onClick={session ? signOut : signIn}
-            className="cursor-pointer hover:underline "
+            onClick={session ? "" : signIn}
+            className="cursor-pointer hover:underline text-center"
           >
             <p className="whitespace-normal">
               {session ? `Hello, ${session.user.name}` : `Hello, ${"Sign In"}`}
             </p>
-            <p className=" sm:text-sm font-semibold">Account & Lists</p>
+            <p className=" sm:text-xs font-semibold">Account & Lists</p>
+            <p
+              className={session ? "inline text-yellow-300 text-xs " : "hidden"}
+              onClick={session ? signOut : ""}
+            >
+              Sign out
+            </p>
           </div>
           <div
             onClick={() => router.push("/orders")}

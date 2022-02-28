@@ -9,14 +9,15 @@ import CheckoutProduct from "../components/CheckoutProduct";
 import { useSession, signIn, signOut } from "next-auth/react";
 import { loadStripe } from "@stripe/stripe-js";
 import axios from "axios";
+import { useEffect } from "react";
 
 const stripePromise = loadStripe(
   process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY
 );
 const Checkout = () => {
   const items = useSelector(selectItems);
-
   const total = useSelector(selectPrice);
+
   const { data: session } = useSession();
 
   const createCheckoutSession = async () => {
