@@ -83,7 +83,6 @@ const Checkout = () => {
             <button
               role="link"
               onClick={!session ? signIn : createCheckoutSession}
-              // onClick={createCheckoutSession}
               className=" mt-8  px-2 md:px-10 py-1 text-sm rounded-lg border border-yellow-300  bg-gradient-to-b from-yellow-200 to-yellow-400  active:from-yellow-500"
             >
               Proceed to Checkout
