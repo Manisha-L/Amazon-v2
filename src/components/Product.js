@@ -84,7 +84,7 @@ function Product({ category, image, title, description, price }) {
       )}
 
       <button
-        onClick={addItemtoBasket}
+        onClick={!session ? signIn : addItemtoBasket}
         className=" absolute bottom-1 px-10 md:px-14 py-1 text-sm font-bold rounded-sm border border-yellow-300 mb-5 bg-gradient-to-b from-yellow-200 to-yellow-400  active:from-yellow-500"
       >
         Add to Basket
