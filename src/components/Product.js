@@ -70,12 +70,7 @@ function Product({ category, image, title, description, price }) {
       {hasPrime && (
         <div className="flex w-full px-3 mb-12 items-center justify-center">
           <div className="w-3/12">
-            <img
-              src="/prime.png"
-              width="100%"
-              height="100%"
-              className="object-contain"
-            />
+            <img src="/prime.png" className="w-full h-full object-contain" />
           </div>
           <p className="hidden  xs:inline-flex whitespace-nowrap text-xs font-semibold text-gray-500 w-8/12  ml-1 ">
             FREE Delivery by Amazon
