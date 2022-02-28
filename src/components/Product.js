@@ -4,7 +4,8 @@ import Currency from "react-currency-formatter";
 import { StarIcon } from "@heroicons/react/solid";
 import { useDispatch } from "react-redux";
 import { addToBasket } from "../slices/basketSlice";
-import Image from "next/image";
+
+import { signIn } from "next-auth/react";
 
 function Product({ category, image, title, description, price }) {
   const [itemQuantity, setItemQuantity] = useState(1);

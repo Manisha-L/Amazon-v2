@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { removeFromBasket, decrement, increment } from "../slices/basketSlice";
+import { removeFromBasket } from "../slices/basketSlice";
 import Currency from "react-currency-formatter";
 
 function CheckoutProduct({ image, title, description, price, itemQuantity }) {
