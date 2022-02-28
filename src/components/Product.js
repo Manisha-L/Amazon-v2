@@ -4,9 +4,10 @@ import Currency from "react-currency-formatter";
 import { StarIcon } from "@heroicons/react/solid";
 import { useDispatch } from "react-redux";
 import { addToBasket } from "../slices/basketSlice";
-import { signIn } from "next-auth/react";
+import { useSession, signIn } from "next-auth/react";
 
 function Product({ category, image, title, description, price }) {
+  const { data: session } = useSession();
   const [itemQuantity, setItemQuantity] = useState(1);
   const [rating] = useState(Math.floor(Math.random() * 5) + 1);
   const [hasPrime] = useState(Math.random() < 0.5);
